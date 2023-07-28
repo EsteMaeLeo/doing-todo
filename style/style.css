@@ -103,5 +103,26 @@ form{
 }
 
 .todo-list {
+  --spacer: 2em;
+
   grid-area: active;
+  background: var(--clr-light);
+  color: var(--clr-dark);
+}
+
+.todo-header{
+    padding: var(--spacer);
+    background: #e4e4e4;
+}
+
+.list-header{
+    margin: 0;
+}
+
+.task-counter{
+    margin: 0
+}
+
+.todo-body{
+    padding: var(--spacer);
 }
