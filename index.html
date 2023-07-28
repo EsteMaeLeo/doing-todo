@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cool TO-DO List</title>
+    <link
+    href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+    rel="stylesheet"
+    />
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body>
     <h1 class="title">My Cool To-Do List</h1>
 
-    <div class="all-task">
+    <div class="all-tasks">
       <h2 class="task-list-title">My Cool List</h2>
       <ul class="task-list">
-        <li class="active-list">Coding</li>
-        <li>Grocery</li>
-        <li>Planning Trip</li>
+        <li class="list-name active-list">Coding</li>
+        <li class="list-name">Grocery</li>
+        <li class="list-name">Planning Trip</li>
       </ul>
 
       <form action="">
@@ -24,7 +28,7 @@
           placeholder="new list name"
           aria-label="new list name"
         />
-        <button class="btn list" aria-label="create new list">+</button>
+        <button class="btn create" aria-label="create new list">+</button>
       </form>
     </div>
 
@@ -71,7 +75,7 @@
               placeholder="new task name"
               aria-label="new task name"
             />
-            <button class="btn task" aria-label="create new list">+</button>
+            <button class="btn list" aria-label="create new list">+</button>
           </form>
         </div>
 
