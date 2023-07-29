@@ -48,28 +48,35 @@ body {
   padding-left: 1.1em;
 }
 
-form{
-    display: flex;
+.list-name {
+  cursor: pointer;
 }
 
-.btn{
-    cursor: pointer;
-    background: 0;
-    border: 0;
-    padding: 0;
-    color: inherit;
-
+.list-name:hover {
+  opacity: 0.7;
 }
 
-.btn.create{
-    font-size: 1.5rem;
-    font-weight: 900;
-    margin-right: 0.25em;
-    transition: opacity 250ms ease-in;
+form {
+  display: flex;
 }
 
-.btn.create:hover{
-    opacity: 0.7;
+.btn {
+  cursor: pointer;
+  background: 0;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+.btn.create {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-right: 0.25em;
+  transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover {
+  opacity: 0.7;
 }
 
 .new {
@@ -94,8 +101,8 @@ form{
   opacity: 0.2;
 }
 
-.new.list{
-    font-size: 1.1rem;
+.new.list {
+  font-size: 1.1rem;
 }
 
 .active-list {
@@ -110,19 +117,55 @@ form{
   color: var(--clr-dark);
 }
 
-.todo-header{
-    padding: var(--spacer);
-    background: #e4e4e4;
+.todo-header {
+  padding: var(--spacer);
+  background: #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.list-header{
-    margin: 0;
+.list-header {
+  margin: 0 1em 0 0;
 }
 
-.task-counter{
-    margin: 0
+.task-counter {
+  margin: 0;
 }
 
-.todo-body{
-    padding: var(--spacer);
+.todo-body {
+  padding: var(--spacer);
+}
+
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.task label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1.5em;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -20px;
+  height: 2px;
+  background: currentColor;
+}
+
+.custom-checkbox {
+  --size: 0.85em;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  margin-right: var(--size);
+  cursor: pointer;
+  border: 3px solid currentColor;
+  border-radius: 50%;
 }
