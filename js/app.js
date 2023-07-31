@@ -10,37 +10,50 @@ const newListInput = document.querySelector("[data-new-list-input]");
 //     id: Date.now(),
 //     name: 'todo'
 // }];
-let lists = [{
+let lists = [
+  {
     id: 1,
-    name: 'name'
-}, {
+    name: "name",
+  },
+  {
     id: 2,
-    name: 'todo'
-}];
+    name: "todo",
+  },
+];
 
-newListForm.addEventListener('submit', e=> {
-    e.preventDefault();
-}) 
+newListForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const listName = newListInput.value;
+  if (listName == null || listName === "") return;
+  const list = createList(listName);
+});
 
+function createList(name) {
+  return {
+    id: Date.now().toString(),
+    name: name,
+    task: [],
+  };
+}
 
 function render() {
   //<li class="list-name">Grocery</li>
-  
+
   clearElement(listContainer);
   lists.forEach((list) => {
     const listElement = document.createElement("li");
-    listElement.dataset.listId = list.id
+    listElement.dataset.listId = list.id;
     listElement.classList.add("list-name");
     listElement.innerText = list.name;
-    listContainer.appendChild(listElement)
+    listContainer.appendChild(listElement);
   });
 }
 
 function clearElement(element) {
-    //delete html original
-    while(element.firstChild){
-        element.removeChild(element.firstChild);
-    }
+  //delete html original
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
 }
 
 render();
