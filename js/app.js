@@ -10,16 +10,10 @@ const newListInput = document.querySelector("[data-new-list-input]");
 //     id: Date.now(),
 //     name: 'todo'
 // }];
-let lists = [
-  {
-    id: 1,
-    name: "name",
-  },
-  {
-    id: 2,
-    name: "todo",
-  },
-];
+//namespace prevent collision or overwriting
+const local_storage_list_key = "task.list";
+
+let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || [];
 
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -28,7 +22,7 @@ newListForm.addEventListener("submit", (e) => {
   const list = createList(listName);
   newListInput.value = null;
   lists.push(list);
-  render();
+  saveAndRender();
 });
 
 function createList(name) {
@@ -37,6 +31,15 @@ function createList(name) {
     name: name,
     task: [],
   };
+}
+
+function saveAndRender() {
+  save();
+  render();
+}
+
+function save() {
+  localStorage.setItem(local_storage_list_key, JSON.stringify(lists));
 }
 
 function render() {
