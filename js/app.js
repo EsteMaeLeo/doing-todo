@@ -17,6 +17,14 @@ const local_storage_selected_list_id_key = "task.selectedListId";
 let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || [];
 let selectedListId = localStorage.getItem(local_storage_selected_list_id_key);
 
+listContainer.addEventListener('click', e =>{
+    if(e.target.tagName.toLowerCase() === 'li'){
+        selectedListId = e.target.dataset.listId
+        saveAndRender();
+    }
+})
+
+
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const listName = newListInput.value;
