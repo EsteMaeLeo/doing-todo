@@ -12,8 +12,10 @@ const newListInput = document.querySelector("[data-new-list-input]");
 // }];
 //namespace prevent collision or overwriting
 const local_storage_list_key = "task.list";
+const local_storage_selected_list_id_key = "task.selectedListId";
 
 let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || [];
+let selectedListId = localStorage.getItem(local_storage_selected_list_id_key);
 
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -51,6 +53,9 @@ function render() {
     listElement.dataset.listId = list.id;
     listElement.classList.add("list-name");
     listElement.innerText = list.name;
+    if (list.id === selectedListId) {
+      listElement.classList.add("active-list");
+    }
     listContainer.appendChild(listElement);
   });
 }
