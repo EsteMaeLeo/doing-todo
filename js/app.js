@@ -50,6 +50,7 @@ function saveAndRender() {
 
 function save() {
   localStorage.setItem(local_storage_list_key, JSON.stringify(lists));
+  localStorage.setItem(local_storage_selected_list_id_key, selectedListId);
 }
 
 function render() {
