@@ -1,6 +1,7 @@
 const listContainer = document.querySelector("[data-lists]");
 const newListForm = document.querySelector("[data-new-list-form]");
 const newListInput = document.querySelector("[data-new-list-input]");
+const deteleListButton = document.querySelector("[data-delete-list-button]");
 
 //list TODO create objec id and name
 // let lists = [{
@@ -24,6 +25,9 @@ listContainer.addEventListener('click', e =>{
     }
 })
 
+deteleListButton.addEventListener('click', e =>{
+    list = lists.filter()
+})
 
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
