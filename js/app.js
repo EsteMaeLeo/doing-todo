@@ -15,6 +15,7 @@ const deteleListButton = document.querySelector("[data-delete-list-button]");
 const local_storage_list_key = "task.list";
 const local_storage_selected_list_id_key = "task.selectedListId";
 
+//get list from localstorage
 let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || [];
 let selectedListId = localStorage.getItem(local_storage_selected_list_id_key);
 
@@ -26,7 +27,9 @@ listContainer.addEventListener('click', e =>{
 })
 
 deteleListButton.addEventListener('click', e =>{
-    list = lists.filter()
+    lists = lists.filter(list => list.id !== selectedListId)
+    selectedListId=null
+    saveAndRender()
 })
 
 newListForm.addEventListener("submit", (e) => {
