@@ -68,8 +68,9 @@
           <!--task3-->
         </div>
         <div class="new-task-creator">
-          <form action="">
+          <form action="" data-new-task-form>
             <input
+              data-new-task-input
               type="text"
               class="new task"
               placeholder="new task name"
@@ -80,7 +81,7 @@
         </div>
 
         <div class="delete-stuff">
-          <button class="btn delete">Clear completed task</button>
+          <button class="btn delete" data-clear-complete-tasks-button>Clear completed task</button>
           <button class="btn delete" data-delete-list-button>Delete List</button>
         </div>
         </div>
@@ -88,5 +89,15 @@
 
       </div>
     </div>
+
+    <template id="task-template">
+      <div class="task">
+        <input type="checkbox" />
+        <label>
+          <span class="custom-checkbox"></span>
+        </label>
+      </div>
+    </template>
+
   </body>
 </html>
