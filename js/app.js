@@ -2,6 +2,12 @@ const listContainer = document.querySelector("[data-lists]");
 const newListForm = document.querySelector("[data-new-list-form]");
 const newListInput = document.querySelector("[data-new-list-input]");
 const deteleListButton = document.querySelector("[data-delete-list-button]");
+const listDisplayContainer = document.querySelector(
+  "[data-list-display-container]"
+);
+const lisTitleElement = document.querySelector("[data-list-title]");
+const listCountElement = document.querySelector("[data-list-count]");
+const taskContainer = document.querySelector("[data-task]");
 
 //list TODO create objec id and name
 // let lists = [{
@@ -19,18 +25,18 @@ const local_storage_selected_list_id_key = "task.selectedListId";
 let lists = JSON.parse(localStorage.getItem(local_storage_list_key)) || [];
 let selectedListId = localStorage.getItem(local_storage_selected_list_id_key);
 
-listContainer.addEventListener('click', e =>{
-    if(e.target.tagName.toLowerCase() === 'li'){
-        selectedListId = e.target.dataset.listId
-        saveAndRender();
-    }
-})
+listContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "li") {
+    selectedListId = e.target.dataset.listId;
+    saveAndRender();
+  }
+});
 
-deteleListButton.addEventListener('click', e =>{
-    lists = lists.filter(list => list.id !== selectedListId)
-    selectedListId=null
-    saveAndRender()
-})
+deteleListButton.addEventListener("click", (e) => {
+  lists = lists.filter((list) => list.id !== selectedListId);
+  selectedListId = null;
+  saveAndRender();
+});
 
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -64,6 +70,26 @@ function render() {
   //<li class="list-name">Grocery</li>
 
   clearElement(listContainer);
+  renderList();
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  if (selectedListId === null || selectedListId === "null") {
+    listDisplayContainer.style.display = "none";
+  } else {
+    listDisplayContainer.style.display = "";
+    lisTitleElement.innerText = selectedList.name;
+    renderTaskCount(selectedList);
+  }
+}
+
+function renderTaskCount(selectedList) {
+  const incompleteTasksCount = selectedList.task.filter(
+    (task) => !task.complete
+  ).length;
+  const traskString = incompleteTasksCount === 1 ? "Task" : "Tasks";
+  listCountElement.innerText = `${incompleteTasksCount} ${traskString} remaining`;
+}
+
+function renderList() {
   lists.forEach((list) => {
     const listElement = document.createElement("li");
     listElement.dataset.listId = list.id;
